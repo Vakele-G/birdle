@@ -37,6 +37,12 @@ class Tile extends StatelessWidget {
           _ => Colors.white,
         },
       ),
+      child: Center(
+        child: Text(
+          letter.toUpperCase(),
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+      ),
     );
   }
 }
