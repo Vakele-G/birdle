@@ -81,7 +81,9 @@ class GamePage extends StatelessWidget {
 
 class GuessInput extends StatelessWidget{
   GuessInput({super.key, required this.onSubmitGuess});
+
   final void Function(String) onSubmitGuess;
+  final TextEditingController _textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -95,8 +97,13 @@ class GuessInput extends StatelessWidget{
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(35)),
-                  )
+                  ),
                 ),
+                controller: _textEditingController,
+                onSubmitted: (_){
+                  print(_textEditingController.text);
+                  _textEditingController.clear();
+                },
               ),
             )
         )
