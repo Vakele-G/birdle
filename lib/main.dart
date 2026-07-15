@@ -84,6 +84,7 @@ class GuessInput extends StatelessWidget{
 
   final void Function(String) onSubmitGuess;
   final TextEditingController _textEditingController = TextEditingController();
+  final FocusNode _focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -100,9 +101,12 @@ class GuessInput extends StatelessWidget{
                   ),
                 ),
                 controller: _textEditingController,
-                onSubmitted: (_){
-                  print(_textEditingController.text);
+                autofocus: true,
+                focusNode: _focusNode,
+                onSubmitted: (input){
+                  onSubmitGuess(_textEditingController.text.trim());
                   _textEditingController.clear();
+                  _focusNode.requestFocus();
                 },
               ),
             )
