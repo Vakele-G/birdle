@@ -72,7 +72,12 @@ class GamePage extends StatelessWidget {
               children: [
                 for (final letter in guess) Tile(letter.char, letter.type),
               ],
-            )
+            ),
+          GuessInput(
+              onSubmitGuess: (guess) {
+                print(guess);
+              }
+          )
         ],
       ),
     );
@@ -110,6 +115,16 @@ class GuessInput extends StatelessWidget{
                 },
               ),
             )
+        ),
+        IconButton(
+          padding: EdgeInsets.zero,
+            icon: const Icon(Icons.arrow_circle_up),
+          onPressed: () {
+            onSubmitGuess(_textEditingController.text.trim());
+            _textEditingController.clear();
+            _focusNode.requestFocus();
+          },
+
         )
       ],
     );
